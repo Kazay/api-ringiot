@@ -4,7 +4,7 @@ var server = require('../db');
 
 module.exports = router;
 
-router.get('/', function(req, res, next) {
+router.post('/', function(req, res, next) {
 	let login = req.body.loginName;
 	server.db.collection('users').findOne({ 
 	 	$or: [{ username: login },{ email: login }], 

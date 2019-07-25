@@ -12,9 +12,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use('/login', loginRouter);
 
-// Démarrer le serveur 
-app.listen(port, hostname, function(){
-	console.log("Server reachable at http://"+ hostname +":"+port);
-});
+app.get('/', (req, res) => {
+  res.send('HEY!')
+})
+
+app.listen(3000, () => console.log('Server running on port 3000'))
 
 module.exports = app;
