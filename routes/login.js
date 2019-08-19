@@ -13,9 +13,13 @@ router.post('/', function(req, res, next) {
 		if(err) throw err;
 		if(resp)
 		{
+			console.log(resp);
 			return res.json({ username : resp.username });
 		}
 		else
+		{
+			console.log('user/password incorrect');
 			return res.json({});
+		}
 	});
 });
