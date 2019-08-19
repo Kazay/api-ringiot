@@ -13,7 +13,9 @@ router.post('/', function(req, res, next) {
 		if(resp)
 		{
 			console.log(resp);
-			let previewUrl = mailer(resp);
+			let previewUrl = '';
+
+			mailer(resp).then((res) => previewUrl = res);
 			return res.json({ previewUrl : previewUrl, found : true });
 		}
 		else
@@ -52,9 +54,9 @@ async function mailer(resp) {
     });
 
 	console.log('Message sent: %s', info.messageId);
-	
+
 	let previewUrl = nodemailer.getTestMessageUrl(info);
 	console.log('Preview URL: %s', previewUrl);
-	
+
 	return previewUrl;
 }
