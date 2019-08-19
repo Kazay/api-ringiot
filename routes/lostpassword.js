@@ -13,9 +13,8 @@ router.post('/', function(req, res, next) {
 		if(resp)
 		{
 			console.log(resp);
-			mailer(resp).then((res) => {
-				previewUrl = res
-				return res.json({ previewUrl : res, found : true });
+			mailer(resp).then((url) => {
+				return res.json({ previewUrl : url, found : true });
 			});
 		}
 		else
