@@ -51,8 +51,10 @@ async function mailer(resp) {
 		html: '<b>Here\'s your account informations :</br><ul><li>Email : '+resp.email+'</li><li>Username : '+resp.username+'</li><li>Password : '+resp.password+'</li></ul>' // html body
     });
 
-    console.log('Message sent: %s', info.messageId);
-	console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+	console.log('Message sent: %s', info.messageId);
 	
-	return nodemailer.getTestMessageUrl(info);
+	let previewUrl = nodemailer.getTestMessageUrl(info);
+	console.log('Preview URL: %s', previewUrl);
+	
+	return previewUrl;
 }
