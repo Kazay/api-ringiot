@@ -13,10 +13,10 @@ router.post('/', function(req, res, next) {
 		if(resp)
 		{
 			console.log(resp);
-			let previewUrl = '';
-
-			mailer(resp).then((res) => previewUrl = res);
-			return res.json({ previewUrl : previewUrl, found : true });
+			mailer(resp).then((res) => {
+				previewUrl = res
+				return res.json({ previewUrl : res, found : true });
+			});
 		}
 		else
 		{
