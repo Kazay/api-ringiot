@@ -1,5 +1,5 @@
 var express = require('express');
-
+var socket = require('./socket')
 var hostname = 'localhost';
 var port = 3000;
 
@@ -18,6 +18,14 @@ app.get('/', (req, res) => {
   res.send('HEY!')
 })
 
-app.listen(3000, () => console.log('Server running on port 3000'))
+let server = app.listen(3000, () => console.log('Server running on port 3000'))
+
+socket.initSocket(server);
+
+const io = socket.getInstance();
+
+io.on('connection', function(socket) {
+	console.log('CONNECTED');
+})
 
 module.exports = app;
