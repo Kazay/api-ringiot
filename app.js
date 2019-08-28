@@ -28,4 +28,6 @@ io.on('connection', function(socket) {
 	console.log('CONNECTED');
 })
 
+io.on('unlock', (message) => console.log(message));
+
 module.exports = app;
